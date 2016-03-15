@@ -1,0 +1,34 @@
+{
+  "name": "presentetion-buildboard",
+  "version": "1.0.0",
+  "description": "presentetion about buildboard 2.0",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mavrin/presentetion-buildboard.git"
+  },
+  "keywords": [],
+  "author": "Konstantin Krivlenia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mavrin/presentetion-buildboard/issues"
+  },
+  "homepage": "https://github.com/Mavrin/presentetion-buildboard#readme",
+  "dependencies": {
+    "shower-core": "^2.0.4",
+    "shower-material": "^1.0.3"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bump": "0.7.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-compress": "^1.1.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-gh-pages": "^1.0.0",
+    "grunt-text-replace": "^0.4.0",
+    "load-grunt-tasks": "^3.4.1"
+  }
+}

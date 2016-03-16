@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
 	require('load-grunt-tasks')(grunt);
 
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 						'!package.json'
 					],
 					dest: 'temp/pres/'
-				},{
+				}, {
 					expand: true,
 					cwd: 'node_modules/shower-core/',
 					src: [
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 						'!README.md'
 					],
 					dest: 'temp/pres/shower/'
-				},{
+				}, {
 					expand: true,
 					cwd: 'node_modules/shower-ribbon/',
 					src: [
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 						'!README.md'
 					],
 					dest: 'temp/pres/shower/themes/ribbon/'
-				},{
+				}, {
 					expand: true,
 					cwd: 'node_modules/shower-material/',
 					src: [
@@ -52,6 +52,14 @@ module.exports = function(grunt) {
 						'!README.md'
 					],
 					dest: 'temp/pres/shower/themes/material/'
+				}, {
+					expand: true,
+					cwd: 'node_modules/highlightjs/',
+					src: [
+						'styles/tomorrow.css',
+						'highlight.pack.min.js'
+					],
+					dest: 'temp/pres/highlightjs/'
 				}]
 			}
 		},
@@ -62,9 +70,12 @@ module.exports = function(grunt) {
 				replacements: [{
 					from: /(node_modules|bower_components)\/shower-core/g,
 					to: 'shower'
-				},{
+				}, {
 					from: /(node_modules|bower_components)\/shower-(ribbon|material)/g,
 					to: 'shower/themes/$2'
+				}, {
+					from: /(node_modules)\/highlightjs/g,
+					to: 'highlightjs'
 				}]
 			},
 			themes: {

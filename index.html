@@ -6,9 +6,14 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="node_modules/shower-material/styles/screen-16x10.css">
+	<link rel="stylesheet" href="node_modules/highlightjs/styles/tomorrow.css"/>
 	<style>
 		.slide:after {
 			content: '';
+		}
+		.slide h2.shout {
+			text-align: center;
+			padding-left: 0;
 		}
 	</style>
 </head>
@@ -105,44 +110,182 @@ padding-left:40px;"
 		<h2 class="shout shrink">Microservices</h2>
 </section>
 <section class="slide">
-	Task, Code, Ci, etc.
+	<img class="cover" style="width: 100%; height:100%" src="pictures/common_schema.png" alt="">
 </section>
 <section class="slide">
-	Сервисы отдают возможности и данные web app по http протоколу.
-	web app отборажает их.
+	<h2>App</h2>
+	<ul>
+		<li class="next">Settings</li>
+		<li class="next">Methods</li>
+	</ul>
 </section>
 <section class="slide">
-	Сервисы могут быть на любой языке. Сейчас используем koa.js
+	<pre class="cover">
+		<code class="json" style="font-size: 15px;
+    overflow: hidden;line-height: 1">
+{
+	"settings": {
+		"url": {
+			"caption": "Targetprocess URL",
+			"type": "uri"
+		},
+		"token": {
+			"caption": "Targetprocess authentication token",
+			"type": "string"
+		},
+		"projects": {
+			"caption": "Ids or names of projects to be monitored",
+			"type": "list",
+			"optional": true
+		},
+		"types": {
+			"caption": "Names of entity types to be monitored",
+			"type": "multiple selection",
+			"optional": true,
+			"values": [
+				"UserStory",
+				"Bug",
+				"Feature",
+				"Epic"
+			],
+			"defaultValue": [
+				"UserStory",
+				"Bug"
+			]
+		}
+	},
+	"methods": {
+		"tasks": {
+			"get": {}
+		},
+		"users": {
+			"get": {}
+		}
+	}
+}
+		</code>
+	</pre>
 </section>
 <section class="slide">
-	web use meteor
+	<img class="cover" src="pictures/settings.png" alt="">
 </section>
 <section class="slide">
-	meteor не фреймворк, скорее платформа.
+	<img class="cover" src="pictures/gitsettings.png" alt="">
 </section>
 <section class="slide">
-	реакиваность везде.
+	<img class="cover" src="pictures/list.png" alt="">
 </section>
 <section class="slide">
-	mongomini and mongo
+	<h2 style="text-align: center" class="shout">
+		<a href="http://koajs.com/">Koa</a>
+		<div style="font-size: 48px;padding-top: 20px">(next generation web framework for node.js)</div>
+	</h2>
 </section>
 <section class="slide">
-	ddp
+	<img src="pictures/meteor.svg" class="cover" alt="">
 </section>
 <section class="slide">
-	 reactive graphQl
+	<h2 class="shout">Meteor is not framework. It is platform</h2>
 </section>
 <section class="slide">
-	Недостаток meteor все свое
+	<h2 class="shout" style="text-align: center">Reactivity</h2>
 </section>
 <section class="slide">
-	Ситуация меняется
+	<h2>Server</h2>
+<pre>
+	<code class="javascript" style="line-height: 1.5">
+Meteor.publish('Lists.public', function() {
+  return Lists.find({
+    userId: {$exists: false}
+  }, {
+    fields: Lists.publicFields
+  });
+});
+</code>
+</pre>
 </section>
 <section class="slide">
-	Demo
+	<h2>Client</h2>
+<pre>
+	<code class="javascript">
+const handle = Meteor.subscribe('Lists.public');
+Lists.find({}).fetch() // return all public
+ 	</code>
+</pre>
 </section>
 <section class="slide">
-	Добавить интеграции с другими системами.
+	<h2>Client</h2>
+<pre>
+	<code class="javascript">
+Template.Lists.helpers({
+  list() {
+    return Lists.find();
+  }
+});
+	</code>
+</pre>
+</section>
+<section class="slide">
+	<h2>Client</h2>
+<pre>
+	<code class="HTMLBars">
+{{#each todo in list}}
+	{{#each tag in todo.tags}}
+		{tag}
+	{{/each}}
+{{/each}}
+	</code>
+</pre>
+</section>
+<section class="slide">
+	<h2 class="shout">DDP, the Distributed Data Protocol</h2>
+</section>
+<section class="slide">
+	<img class="cover" src="pictures/ddp.png" alt="">
+</section>
+<section class="slide">
+	<img class="cover" src="pictures/quarte1.jpg" alt="">
+</section>
+<section class="slide">
+	<h2 >Meteor 1.3</h2>
+	<img class="cover" src="pictures/meteor-icon.svg" alt="">
+</section>
+<section class="slide">
+	<h2 style="font-size: 24px;">Reactive GraphQl</h2>
+	<img class="cover" src="pictures/graph.svg" alt="">
+</section>
+<section class="slide">
+	<h2 class="shout">ES2015 modules with import and export</h2>
+</section>
+<section class="slide">
+	<img class="cover" src="pictures/npm.svg" alt="">
+</section>
+<section class="slide">
+	<h2 class="shout">Official testing support</h2>
+</section>
+<section class="slide">
+	<h2 class="shout">Demo</h2>
+</section>
+<section class="slide">
+	<h2>Future</h2>
+	<style>
+		.logos {
+			display: flex;
+		}
+		.logos > img {
+			flex-grow: 1;
+			flex-basis: 300px;
+		}
+	</style>
+	<div class="logos" >
+		<img src="pictures/docker.svg" alt="">
+		<img src="pictures/bitbucket.svg" alt="">
+		<img src="pictures/gitlab.svg" alt="">
+		<img src="pictures/logo_teamcity.svg" alt="">
+	</div>
+</section>
+<section class="slide">
+	<h2 class="shout">Вопросы?</h2>
 </section>
 <!--
     To hide progress bar from entire presentation
@@ -150,6 +293,10 @@ padding-left:40px;"
     -->
 <div class="progress"></div>
 <script src="node_modules/shower-core/shower.min.js"></script>
+<script src="node_modules/highlightjs/highlight.pack.min.js"></script>
+<script>
+	hljs.initHighlighting();
+</script>
 <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
 <!-- Photos by John Carey, fiftyfootshadows.net -->
 </body>

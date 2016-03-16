@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Mavrin/presentetion-buildboard#readme",
   "dependencies": {
+    "highlightjs": "^8.7.0",
     "shower-core": "^2.0.4",
     "shower-material": "^1.0.3"
   },

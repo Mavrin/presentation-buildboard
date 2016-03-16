@@ -16,6 +16,15 @@
 			padding-left: 0;
 		}
 	</style>
+	<style>
+		.logos {
+			display: flex;
+		}
+		.logos > img {
+			flex-grow: 1;
+			flex-basis: 300px;
+		}
+	</style>
 </head>
 <body class="shower list">
 <header class="caption">
@@ -58,7 +67,7 @@ padding-left:40px;"
 	<img class="cover" style="width: 100%; height:100%" src="pictures/coding.jpg" alt="">
 </section>
 <section class="slide">
-	<img class="cover"src="pictures/tests.jpg" alt="">
+	<img class="cover" src="pictures/tests.jpg" alt="">
 </section>
 <section class="slide">
 	<img class="cover" style="width: 100%; height:100%" src="pictures/testing.jpg" alt="">
@@ -115,8 +124,24 @@ padding-left:40px;"
 <section class="slide">
 	<h2>App</h2>
 	<ul>
-		<li class="next">Settings</li>
-		<li class="next">Methods</li>
+		<li class="next">Settings
+			<ul>
+				<li class="next">Url</li>
+				<li class="next">Token</li>
+				<li class="next">Projects</li>
+			</ul>
+		</li>
+		<li class="next">Methods
+			<ul>
+				<li class="next">getTasks</li>
+				<li class="next">getBuilds</li>
+				<li class="next">getActions
+					<ul>
+						<li class="next">runBuild</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
 	</ul>
 </section>
 <section class="slide">
@@ -178,7 +203,7 @@ padding-left:40px;"
 <section class="slide">
 	<h2 style="text-align: center" class="shout">
 		<a href="http://koajs.com/">Koa</a>
-		<div style="font-size: 48px;padding-top: 20px">(next generation web framework for node.js)</div>
+		<span style="display:block;font-size: 48px;padding-top: 20px">(next generation web framework for node.js)</span>
 	</h2>
 </section>
 <section class="slide">
@@ -218,7 +243,7 @@ Lists.find({}).fetch() // return all public
 <pre>
 	<code class="javascript">
 Template.Lists.helpers({
-  list() {
+  lists() {
     return Lists.find();
   }
 });
@@ -229,7 +254,7 @@ Template.Lists.helpers({
 	<h2>Client</h2>
 <pre>
 	<code class="HTMLBars">
-{{#each todo in list}}
+{{#each todo in lists}}
 	{{#each tag in todo.tags}}
 		{tag}
 	{{/each}}
@@ -244,6 +269,34 @@ Template.Lists.helpers({
 	<img class="cover" src="pictures/ddp.png" alt="">
 </section>
 <section class="slide">
+	<h2>Client</h2>
+<pre>
+	<code class="javascript">
+	// In client-side code, declare a local collection
+	// by passing `null` as the argument
+	ScoreAverages = new Mongo.Collection(null);
+	</code>
+</pre>
+</section>
+<section class="slide">
+	<h2>Client</h2>
+<pre>
+	<code class="javascript">
+function updateAverages() {
+  // Clean out result cache
+  ScoreAverages.remove({});
+
+  // Call a Method that does an expensive computation
+  Games.methods.calculateAverages.call((err, res) => {
+    res.forEach((item) => {
+      ScoreAverages.insert(item);
+    });
+  });
+}
+	</code>
+</pre>
+</section>
+<section class="slide">
 	<img class="cover" src="pictures/quarte1.jpg" alt="">
 </section>
 <section class="slide">
@@ -255,6 +308,33 @@ Template.Lists.helpers({
 	<img class="cover" src="pictures/graph.svg" alt="">
 </section>
 <section class="slide">
+	<h2>GraphQl request</h2>
+<pre>
+	<code>
+{
+  getAverage(category: 'sci-fi') {
+    name,
+	url,
+    value
+  }
+}
+	</code>
+</pre>
+</section>
+<section class="slide">
+	<h2>GraphQl response</h2>
+<pre>
+	<code class="json">
+[{
+	name: 'beyondthestars',
+	url: 'https://beyondthestars.com'
+	value: 1000
+}]
+	</code>
+</pre>
+</section>
+
+<section class="slide">
 	<h2 class="shout">ES2015 modules with import and export</h2>
 </section>
 <section class="slide">
@@ -264,25 +344,28 @@ Template.Lists.helpers({
 	<h2 class="shout">Official testing support</h2>
 </section>
 <section class="slide">
+	<h2 class="shout">Deploy</h2>
+</section>
+<section class="slide">
+	<h2 class="shout"><a href="https://github.com/mislav/git-deploy">git-deploy</a></h2>
+</section>
+<section class="slide">
 	<h2 class="shout">Demo</h2>
 </section>
 <section class="slide">
+	<img class="cover" src="pictures/newbuildboard.png" alt="">
+</section>
+<section class="slide">
 	<h2>Future</h2>
-	<style>
-		.logos {
-			display: flex;
-		}
-		.logos > img {
-			flex-grow: 1;
-			flex-basis: 300px;
-		}
-	</style>
 	<div class="logos" >
 		<img src="pictures/docker.svg" alt="">
 		<img src="pictures/bitbucket.svg" alt="">
 		<img src="pictures/gitlab.svg" alt="">
 		<img src="pictures/logo_teamcity.svg" alt="">
 	</div>
+</section>
+<section class="slide">
+	<h2 class="shout"><a href="https://github.com/buildboard">Buildboard</a></h2>
 </section>
 <section class="slide">
 	<h2 class="shout">Вопросы?</h2>

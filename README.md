@@ -1,2 +1,2 @@
-https://mavrin.github.io/presentetion-buildboard
+https://mavrin.github.io/presentation-buildboard
 

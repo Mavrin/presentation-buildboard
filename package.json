@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "gh": "grunt publish"
+    "gh": "grunt publish",
+    "archive": "grunt archive"
   },
   "repository": {
     "type": "git",
